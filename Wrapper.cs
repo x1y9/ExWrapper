@@ -1,5 +1,7 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace ExWrapper.Wrapper
 {
@@ -10,12 +12,22 @@ namespace ExWrapper.Wrapper
         private static string callCmd = @"${cmd}";
         private static string callPara = @"${para}";
         private static string callDir = @"${dir}";
+        private static string runHide = @"${hide}";
 
         private static string tempFile = "_exwraper_temp_.bat";
+
+        [DllImport("kernel32.dll")]
+        private static extern IntPtr GetConsoleWindow();
+
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
         public static Process RunProcess(string path, string command, string argument,
             bool hide = false, bool shell=false)
         {
+            if (runHide.Equals("true")) {
+                ShowWindow(GetConsoleWindow(), 0);
+            }
             var p = new Process();
             p.StartInfo.WorkingDirectory = path;
                 
@@ -37,7 +49,7 @@ namespace ExWrapper.Wrapper
                 File.WriteAllText(tempFile, embedContent);
                 try
                 {
-                    RunProcess("", tempFile, "");
+                    RunProcess("", tempFile, "", runHide.Equals("true"));
                 }
                 finally
                 {
@@ -46,7 +58,7 @@ namespace ExWrapper.Wrapper
             }
             else if (!callCmd.StartsWith("${"))
             {
-                RunProcess(callDir, callCmd, callPara);
+                RunProcess(callDir, callCmd, callPara, runHide.Equals("true"));
             }
         }
     }

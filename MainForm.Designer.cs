@@ -29,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupCall = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textDir = new System.Windows.Forms.TextBox();
@@ -39,6 +40,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupEmbed = new System.Windows.Forms.GroupBox();
             this.textEmbed = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textIcon = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbShowConsole = new System.Windows.Forms.CheckBox();
+            this.radioCall = new System.Windows.Forms.RadioButton();
+            this.radioEmbed = new System.Windows.Forms.RadioButton();
             this.groupCall.SuspendLayout();
             this.groupEmbed.SuspendLayout();
             this.SuspendLayout();
@@ -55,14 +62,14 @@
             this.groupCall.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupCall.Name = "groupCall";
             this.groupCall.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupCall.Size = new System.Drawing.Size(349, 280);
+            this.groupCall.Size = new System.Drawing.Size(349, 221);
             this.groupCall.TabIndex = 0;
             this.groupCall.TabStop = false;
             this.groupCall.Text = "Call";
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(9, 178);
+            this.label3.Location = new System.Drawing.Point(9, 131);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(118, 29);
             this.label3.TabIndex = 5;
@@ -71,7 +78,7 @@
             // 
             // textDir
             // 
-            this.textDir.Location = new System.Drawing.Point(134, 178);
+            this.textDir.Location = new System.Drawing.Point(134, 131);
             this.textDir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textDir.Name = "textDir";
             this.textDir.Size = new System.Drawing.Size(167, 28);
@@ -79,7 +86,7 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(9, 125);
+            this.label2.Location = new System.Drawing.Point(9, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 29);
             this.label2.TabIndex = 3;
@@ -88,7 +95,7 @@
             // 
             // textPara
             // 
-            this.textPara.Location = new System.Drawing.Point(134, 125);
+            this.textPara.Location = new System.Drawing.Point(134, 78);
             this.textPara.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textPara.Name = "textPara";
             this.textPara.Size = new System.Drawing.Size(167, 28);
@@ -96,7 +103,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(9, 76);
+            this.label1.Location = new System.Drawing.Point(9, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 29);
             this.label1.TabIndex = 1;
@@ -105,15 +112,16 @@
             // 
             // textRun
             // 
-            this.textRun.Location = new System.Drawing.Point(134, 76);
+            this.textRun.Location = new System.Drawing.Point(134, 29);
             this.textRun.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textRun.Name = "textRun";
             this.textRun.Size = new System.Drawing.Size(167, 28);
             this.textRun.TabIndex = 0;
+            this.textRun.Click += new System.EventHandler(this.textRun_Click);
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(777, 473);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
@@ -126,32 +134,99 @@
             // groupEmbed
             // 
             this.groupEmbed.Controls.Add(this.textEmbed);
+            this.groupEmbed.Enabled = false;
             this.groupEmbed.Location = new System.Drawing.Point(453, 95);
             this.groupEmbed.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupEmbed.Name = "groupEmbed";
             this.groupEmbed.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupEmbed.Size = new System.Drawing.Size(349, 280);
+            this.groupEmbed.Size = new System.Drawing.Size(349, 221);
             this.groupEmbed.TabIndex = 6;
             this.groupEmbed.TabStop = false;
             this.groupEmbed.Text = "Embed";
             // 
             // textEmbed
             // 
-            this.textEmbed.Location = new System.Drawing.Point(33, 74);
+            this.textEmbed.Location = new System.Drawing.Point(33, 29);
             this.textEmbed.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEmbed.Multiline = true;
             this.textEmbed.Name = "textEmbed";
-            this.textEmbed.Size = new System.Drawing.Size(288, 132);
+            this.textEmbed.Size = new System.Drawing.Size(288, 130);
             this.textEmbed.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(72, 361);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(118, 29);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Icon File";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textIcon
+            // 
+            this.textIcon.Location = new System.Drawing.Point(197, 361);
+            this.textIcon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textIcon.Name = "textIcon";
+            this.textIcon.Size = new System.Drawing.Size(167, 28);
+            this.textIcon.TabIndex = 6;
+            this.textIcon.Click += new System.EventHandler(this.textIcon_Click);
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(72, 403);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(118, 29);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Show Console";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cbShowConsole
+            // 
+            this.cbShowConsole.AutoSize = true;
+            this.cbShowConsole.Location = new System.Drawing.Point(197, 407);
+            this.cbShowConsole.Name = "cbShowConsole";
+            this.cbShowConsole.Size = new System.Drawing.Size(22, 21);
+            this.cbShowConsole.TabIndex = 10;
+            this.cbShowConsole.UseVisualStyleBackColor = true;
+            // 
+            // radioCall
+            // 
+            this.radioCall.AutoSize = true;
+            this.radioCall.Checked = true;
+            this.radioCall.Location = new System.Drawing.Point(80, 41);
+            this.radioCall.Name = "radioCall";
+            this.radioCall.Size = new System.Drawing.Size(150, 22);
+            this.radioCall.TabIndex = 11;
+            this.radioCall.TabStop = true;
+            this.radioCall.Text = "Call External";
+            this.radioCall.UseVisualStyleBackColor = true;
+            // 
+            // radioEmbed
+            // 
+            this.radioEmbed.AutoSize = true;
+            this.radioEmbed.Location = new System.Drawing.Point(280, 41);
+            this.radioEmbed.Name = "radioEmbed";
+            this.radioEmbed.Size = new System.Drawing.Size(132, 22);
+            this.radioEmbed.TabIndex = 12;
+            this.radioEmbed.Text = "Embed batch";
+            this.radioEmbed.UseVisualStyleBackColor = true;
+            this.radioEmbed.CheckedChanged += new System.EventHandler(this.radioEmbed_CheckedChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 540);
+            this.Controls.Add(this.radioEmbed);
+            this.Controls.Add(this.radioCall);
+            this.Controls.Add(this.cbShowConsole);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.groupEmbed);
+            this.Controls.Add(this.textIcon);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupCall);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
             this.Text = "ExWrapper";
@@ -160,6 +235,8 @@
             this.groupEmbed.ResumeLayout(false);
             this.groupEmbed.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         private System.Windows.Forms.TextBox textEmbed;
@@ -180,5 +257,12 @@
         private System.Windows.Forms.TextBox textRun;
 
         #endregion
+
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textIcon;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox cbShowConsole;
+        private System.Windows.Forms.RadioButton radioCall;
+        private System.Windows.Forms.RadioButton radioEmbed;
     }
 }
