@@ -48,55 +48,49 @@ namespace ExWrapper
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            if (radioEmbed.Checked && string.IsNullOrWhiteSpace(textEmbed.Text) ||
+                radioCall.Checked && string.IsNullOrWhiteSpace(textRun.Text))
             {
-                saveFileDialog.Title = "Save As";
-                saveFileDialog.Filter = "Exe Files (*.exe)|*.exe";
-                saveFileDialog.OverwritePrompt = true; 
-
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                MessageBox.Show("You must set a valid run content", "ExWrapper");
+            }
+            else
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    string outputExe = saveFileDialog.FileName;
+                    saveFileDialog.Title = "Save As";
+                    saveFileDialog.Filter = "Exe Files (*.exe)|*.exe";
+                    saveFileDialog.OverwritePrompt = true;
 
-                    bool useEmbed = false;
-                    string source = Properties.Resources.Wrapper;
-                    if (useEmbed)
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        source = source.Replace("${embed}", escape2src(textEmbed.Text));
+                        string outputExe = saveFileDialog.FileName;
+                        string source = Properties.Resources.Wrapper;
+                        if (radioEmbed.Checked)
+                        {
+                            source = source.Replace("${embed}", escape2src(textEmbed.Text));
+                        }
+                        else
+                        {
+                            source = source.Replace("${cmd}", escape2src(textRun.Text));
+                            source = source.Replace("${para}", escape2src(textPara.Text));
+                            source = source.Replace("${dir}", escape2src(textDir.Text));
+                        }
+                        source = source.Replace("${hide}", cbShowConsole.Checked ? "false" : "true");
+                        Source2Exe(source, textIcon.Text, outputExe);
                     }
-                    else
-                    {
-                        source = source.Replace("${cmd}", escape2src(textRun.Text));
-                        source = source.Replace("${para}", escape2src(textPara.Text));
-                        source = source.Replace("${dir}", escape2src(textDir.Text));
-                    }
-                    source = source.Replace("${hide}", cbShowConsole.Checked ? "false" : "true");
-                    Source2Exe(source, textIcon.Text, outputExe);
                 }
             }
         }
 
-        private void textIcon_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog openDialog = new OpenFileDialog())
-            {
-                openDialog.Title = "Select a icon file";
-                openDialog.Filter = "Icon Files (*.ico)|*.ico";
-                if (openDialog.ShowDialog() == DialogResult.OK)
-                {
-                    textIcon.Text = openDialog.FileName;
-                }
-            }
-        }
-
-
+       
         private void radioEmbed_CheckedChanged(object sender, EventArgs e)
         {
             groupCall.Enabled = radioCall.Checked;
             groupEmbed.Enabled = radioEmbed.Checked;
         }
 
-        private void textRun_Click(object sender, EventArgs e)
+
+        private void btnOpen_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog openDialog = new OpenFileDialog())
             {
@@ -105,6 +99,19 @@ namespace ExWrapper
                 if (openDialog.ShowDialog() == DialogResult.OK)
                 {
                     textRun.Text = Path.GetFileName(openDialog.FileName);
+                }
+            }
+        }
+
+        private void btnSelectIcon_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openDialog = new OpenFileDialog())
+            {
+                openDialog.Title = "Select a icon file";
+                openDialog.Filter = "Icon Files (*.ico)|*.ico";
+                if (openDialog.ShowDialog() == DialogResult.OK)
+                {
+                    textIcon.Text = openDialog.FileName;
                 }
             }
         }

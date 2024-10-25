@@ -31,6 +31,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupCall = new System.Windows.Forms.GroupBox();
+            this.btnOpen = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textDir = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,12 +47,14 @@
             this.cbShowConsole = new System.Windows.Forms.CheckBox();
             this.radioCall = new System.Windows.Forms.RadioButton();
             this.radioEmbed = new System.Windows.Forms.RadioButton();
+            this.btnSelectIcon = new System.Windows.Forms.Button();
             this.groupCall.SuspendLayout();
             this.groupEmbed.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupCall
             // 
+            this.groupCall.Controls.Add(this.btnOpen);
             this.groupCall.Controls.Add(this.label3);
             this.groupCall.Controls.Add(this.textDir);
             this.groupCall.Controls.Add(this.label2);
@@ -62,10 +65,23 @@
             this.groupCall.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupCall.Name = "groupCall";
             this.groupCall.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupCall.Size = new System.Drawing.Size(349, 221);
+            this.groupCall.Size = new System.Drawing.Size(384, 221);
             this.groupCall.TabIndex = 0;
             this.groupCall.TabStop = false;
             this.groupCall.Text = "Call";
+            // 
+            // btnOpen
+            // 
+            this.btnOpen.AutoSize = true;
+            this.btnOpen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnOpen.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpen.Location = new System.Drawing.Point(307, 26);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(35, 32);
+            this.btnOpen.TabIndex = 6;
+            this.btnOpen.Text = "...";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // label3
             // 
@@ -117,17 +133,16 @@
             this.textRun.Name = "textRun";
             this.textRun.Size = new System.Drawing.Size(167, 28);
             this.textRun.TabIndex = 0;
-            this.textRun.Click += new System.EventHandler(this.textRun_Click);
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(777, 473);
+            this.button1.Location = new System.Drawing.Point(728, 473);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 54);
+            this.button1.Size = new System.Drawing.Size(160, 54);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Generate";
+            this.button1.Text = "Generate Exe";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -146,11 +161,11 @@
             // 
             // textEmbed
             // 
-            this.textEmbed.Location = new System.Drawing.Point(33, 29);
+            this.textEmbed.Location = new System.Drawing.Point(20, 29);
             this.textEmbed.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textEmbed.Multiline = true;
             this.textEmbed.Name = "textEmbed";
-            this.textEmbed.Size = new System.Drawing.Size(288, 130);
+            this.textEmbed.Size = new System.Drawing.Size(307, 172);
             this.textEmbed.TabIndex = 6;
             // 
             // label4
@@ -169,7 +184,6 @@
             this.textIcon.Name = "textIcon";
             this.textIcon.Size = new System.Drawing.Size(167, 28);
             this.textIcon.TabIndex = 6;
-            this.textIcon.Click += new System.EventHandler(this.textIcon_Click);
             // 
             // label5
             // 
@@ -212,11 +226,25 @@
             this.radioEmbed.UseVisualStyleBackColor = true;
             this.radioEmbed.CheckedChanged += new System.EventHandler(this.radioEmbed_CheckedChanged);
             // 
+            // btnSelectIcon
+            // 
+            this.btnSelectIcon.AutoSize = true;
+            this.btnSelectIcon.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSelectIcon.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelectIcon.Location = new System.Drawing.Point(370, 358);
+            this.btnSelectIcon.Name = "btnSelectIcon";
+            this.btnSelectIcon.Size = new System.Drawing.Size(35, 32);
+            this.btnSelectIcon.TabIndex = 7;
+            this.btnSelectIcon.Text = "...";
+            this.btnSelectIcon.UseVisualStyleBackColor = true;
+            this.btnSelectIcon.Click += new System.EventHandler(this.btnSelectIcon_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 540);
+            this.Controls.Add(this.btnSelectIcon);
             this.Controls.Add(this.radioEmbed);
             this.Controls.Add(this.radioCall);
             this.Controls.Add(this.cbShowConsole);
@@ -229,7 +257,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
-            this.Text = "ExWrapper";
+            this.Text = "ExWrapper 1.0";
             this.groupCall.ResumeLayout(false);
             this.groupCall.PerformLayout();
             this.groupEmbed.ResumeLayout(false);
@@ -264,5 +292,7 @@
         private System.Windows.Forms.CheckBox cbShowConsole;
         private System.Windows.Forms.RadioButton radioCall;
         private System.Windows.Forms.RadioButton radioEmbed;
+        private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.Button btnSelectIcon;
     }
 }
