@@ -1,1 +1,5 @@
 ExWrapper.sln.DotSettings.user
+.idea/
+.vs/
+bin/
+obj/

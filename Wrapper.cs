@@ -11,7 +11,6 @@ namespace ExWrapper.Wrapper
         private static string callDir = "${dir}";
 
         private static string tempFile = "_exwraper_temp_.bat";
-        private static bool redirectStandardOutput = true;
 
         public static Process RunProcess(string path, string command, string argument,
             bool hide = false, bool redirectInput = false, bool shell=false)
@@ -31,7 +30,7 @@ namespace ExWrapper.Wrapper
             return p;
         }
         
-        static void Main2(string[] args)
+        static void Main(string[] args)
         {
             embedContent = "";
             embedContent += "\r\n";
