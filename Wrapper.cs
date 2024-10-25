@@ -13,12 +13,11 @@ namespace ExWrapper.Wrapper
         private static string tempFile = "_exwraper_temp_.bat";
 
         public static Process RunProcess(string path, string command, string argument,
-            bool hide = false, bool redirectInput = false, bool shell=false)
+            bool hide = false, bool shell=false)
         {
             var p = new Process();
             p.StartInfo.WorkingDirectory = path;
                 
-            //适配两种情况，比如cmd.exe /c aaa.bat或者直接写aaa.bat
             p.StartInfo.FileName = command; 
             p.StartInfo.Arguments = argument;
 
@@ -26,18 +25,14 @@ namespace ExWrapper.Wrapper
             p.StartInfo.UseShellExecute = shell;
             p.StartInfo.CreateNoWindow = hide;
             p.Start();
-
+            p.WaitForExit();
             return p;
         }
         
         static void Main(string[] args)
         {
-            embedContent = "";
-            embedContent += "\r\n";
-
             if (!embedContent.StartsWith("${"))
             {
-                
                 File.WriteAllText(tempFile, embedContent);
                 try
                 {
