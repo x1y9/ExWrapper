@@ -1,14 +1,6 @@
 ﻿using Microsoft.CSharp;
 using System;
 using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ExWrapper
@@ -41,6 +33,11 @@ namespace ExWrapper
             return comRes.Errors != null && comRes.Errors.Count == 0;
         }
 
+        private string escape2src(string old)
+        {
+            return old.Replace("\"", "\"\"");
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
@@ -57,13 +54,13 @@ namespace ExWrapper
                     string source = Properties.Resources.Wrapper;
                     if (useEmbed)
                     {
-                        source = source.Replace("${embed}", textEmbed.Text);
+                        source = source.Replace("${embed}", escape2src(textEmbed.Text));
                     }
                     else
                     {
-                        source = source.Replace("${cmd}", textRun.Text);
-                        source = source.Replace("${para}", textPara.Text);
-                        source = source.Replace("${dir}", textDir.Text);
+                        source = source.Replace("${cmd}", escape2src(textRun.Text));
+                        source = source.Replace("${para}", escape2src(textPara.Text));
+                        source = source.Replace("${dir}", escape2src(textDir.Text));
                     }
                     Source2Exe(source, outputExe);
                 }

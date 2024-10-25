@@ -5,10 +5,11 @@ namespace ExWrapper.Wrapper
 {
     class Program
     {
-        private static string embedContent = "${embed}";
-        private static string callCmd = "${cmd}";
-        private static string callPara = "${para}";
-        private static string callDir = "${dir}";
+        //使用@避免转义，唯一需要转义的符号是双引号，要写两个双引号
+        private static string embedContent = @"${embed}";
+        private static string callCmd = @"${cmd}";
+        private static string callPara = @"${para}";
+        private static string callDir = @"${dir}";
 
         private static string tempFile = "_exwraper_temp_.bat";
 
