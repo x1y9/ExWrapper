@@ -61,22 +61,23 @@ namespace ExWrapper.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to using System.Diagnostics;
+        ///   Looks up a localized string similar to using System;
+        ///using System.Diagnostics;
         ///using System.IO;
+        ///using System.Runtime.InteropServices;
         ///
         ///namespace ExWrapper.Wrapper
         ///{
         ///    class Program
         ///    {
-        ///        private static string embedContent = &quot;${embed}&quot;;
-        ///        private static string callCmd = &quot;${cmd}&quot;;
-        ///        private static string callPara = &quot;${para}&quot;;
-        ///        private static string callDir = &quot;${dir}&quot;;
+        ///        //使用@避免转义，唯一需要转义的符号是双引号，要写两个双引号
+        ///        private static string embedContent = @&quot;${embed}&quot;;
+        ///        private static string callCmd = @&quot;${cmd}&quot;;
+        ///        private static string callPara = @&quot;${para}&quot;;
+        ///        private static string callDir = @&quot;${dir}&quot;;
+        ///        private static string runHide = @&quot;${hide}&quot;;
         ///
-        ///        private static string tempFile = &quot;_exwraper_temp_.bat&quot;;
-        ///
-        ///        public static Process RunProcess(string path, string command, string argument,
-        ///            bool hide = false, bool r [rest of string was truncated]&quot;;.
+        ///        private static string tempFile = [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Wrapper {
             get {
