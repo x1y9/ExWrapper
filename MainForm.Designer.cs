@@ -203,10 +203,12 @@
             // 
             this.cbShowConsole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbShowConsole.AutoSize = true;
-            this.cbShowConsole.Location = new System.Drawing.Point(160, 369);
+            this.cbShowConsole.Checked = true;
+            this.cbShowConsole.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbShowConsole.Location = new System.Drawing.Point(160, 366);
             this.cbShowConsole.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbShowConsole.Name = "cbShowConsole";
-            this.cbShowConsole.Size = new System.Drawing.Size(15, 14);
+            this.cbShowConsole.Size = new System.Drawing.Size(18, 17);
             this.cbShowConsole.TabIndex = 10;
             this.cbShowConsole.UseVisualStyleBackColor = true;
             // 
@@ -217,7 +219,7 @@
             this.radioCall.Location = new System.Drawing.Point(38, 34);
             this.radioCall.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioCall.Name = "radioCall";
-            this.radioCall.Size = new System.Drawing.Size(129, 19);
+            this.radioCall.Size = new System.Drawing.Size(132, 19);
             this.radioCall.TabIndex = 11;
             this.radioCall.TabStop = true;
             this.radioCall.Text = "Call External";
@@ -229,7 +231,7 @@
             this.radioEmbed.Location = new System.Drawing.Point(216, 34);
             this.radioEmbed.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioEmbed.Name = "radioEmbed";
-            this.radioEmbed.Size = new System.Drawing.Size(113, 19);
+            this.radioEmbed.Size = new System.Drawing.Size(116, 19);
             this.radioEmbed.TabIndex = 12;
             this.radioEmbed.Text = "Embed batch";
             this.radioEmbed.UseVisualStyleBackColor = true;
