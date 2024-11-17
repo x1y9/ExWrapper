@@ -13,7 +13,7 @@ namespace ExWrapper
             InitializeComponent();
         }
 
-        private bool Source2Exe(string source, string icon, string outputExe)
+        private bool Source2Exe(string source, string icon, bool showConsole, string outputExe)
         {
             CSharpCodeProvider compiler = new CSharpCodeProvider();
             CompilerParameters comParms = new CompilerParameters();
@@ -25,6 +25,8 @@ namespace ExWrapper
             comParms.MainClass = "ExWrapper.Wrapper.Program";
             //如果加/target:winexe可以生成gui exe
             comParms.CompilerOptions = "/optimize";
+            if (!showConsole)
+                comParms.CompilerOptions += " /target:winexe";
             comParms.OutputAssembly = outputExe;
             comParms.TreatWarningsAsErrors = false;
 
@@ -76,7 +78,7 @@ namespace ExWrapper
                             source = source.Replace("${dir}", escape2src(textDir.Text));
                         }
                         source = source.Replace("${hide}", cbShowConsole.Checked ? "false" : "true");
-                        Source2Exe(source, textIcon.Text, outputExe);
+                        Source2Exe(source, textIcon.Text, cbShowConsole.Checked, outputExe);
                     }
                 }
             }
