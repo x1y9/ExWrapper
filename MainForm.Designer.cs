@@ -109,7 +109,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 24);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Parameter";
+            this.label2.Text = "Arguments";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // textPara
