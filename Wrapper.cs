@@ -12,8 +12,6 @@ namespace ExWrapper.Wrapper
         private static string callDir = @"${dir}";
         private static string hideConsole = @"${hide}";
 
-        private static string tempFile = "_exwraper_temp_.bat";
-
 
         public static Process RunProcess(string path, string command, string argument,
             bool hide = false, bool shell=false)
@@ -37,6 +35,7 @@ namespace ExWrapper.Wrapper
             var para = string.Join(" ", args);
             if (!embedContent.StartsWith("${"))
             {
+                string tempFile = Path.Combine(Path.GetTempPath(), System.Guid.NewGuid() + ".bat");
                 File.WriteAllText(tempFile, embedContent);
                 try
                 {
