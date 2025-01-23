@@ -34,12 +34,13 @@ namespace ExWrapper.Wrapper
         
         static void Main(string[] args)
         {
+            var para = string.Join(" ", args);
             if (!embedContent.StartsWith("${"))
             {
                 File.WriteAllText(tempFile, embedContent);
                 try
                 {
-                    RunProcess("", tempFile, "", hideConsole.Equals("true"));
+                    RunProcess("", tempFile, para, hideConsole.Equals("true"));
                 }
                 finally
                 {
@@ -48,7 +49,7 @@ namespace ExWrapper.Wrapper
             }
             else if (!callCmd.StartsWith("${"))
             {
-                RunProcess(callDir, callCmd, callPara, hideConsole.Equals("true"));
+                RunProcess(callDir, callCmd, string.Join(" ",callPara, para), hideConsole.Equals("true"));
             }
         }
     }
