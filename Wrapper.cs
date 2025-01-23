@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace ExWrapper.Wrapper
@@ -13,7 +14,7 @@ namespace ExWrapper.Wrapper
         private static string hideConsole = @"${hide}";
 
 
-        public static Process RunProcess(string path, string command, string argument,
+        public static int RunProcess(string path, string command, string argument,
             bool hide = false, bool shell=false)
         {
             var p = new Process();
@@ -27,19 +28,20 @@ namespace ExWrapper.Wrapper
             p.StartInfo.CreateNoWindow = hide;
             p.Start();
             p.WaitForExit();
-            return p;
+            return p.ExitCode;
         }
         
         static void Main(string[] args)
         {
             var para = string.Join(" ", args);
+            bool hide = hideConsole.Equals("true");
             if (!embedContent.StartsWith("${"))
             {
-                string tempFile = Path.Combine(Path.GetTempPath(), System.Guid.NewGuid() + ".bat");
+                string tempFile = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".bat");
                 File.WriteAllText(tempFile, embedContent);
                 try
                 {
-                    RunProcess("", tempFile, para, hideConsole.Equals("true"));
+                    Environment.ExitCode = RunProcess("", tempFile, para, hide);
                 }
                 finally
                 {
@@ -48,7 +50,7 @@ namespace ExWrapper.Wrapper
             }
             else if (!callCmd.StartsWith("${"))
             {
-                RunProcess(callDir, callCmd, string.Join(" ",callPara, para), hideConsole.Equals("true"));
+                Environment.ExitCode = RunProcess(callDir, callCmd, string.Join(" ",callPara, para), hide);
             }
         }
     }
