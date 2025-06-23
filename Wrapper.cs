@@ -31,9 +31,20 @@ namespace ExWrapper.Wrapper
             return p.ExitCode;
         }
         
+        private static string EscapeArgument(string arg)
+        {
+            if (string.IsNullOrEmpty(arg))
+                return "\"\"";
+            if (arg.Contains(" ") || arg.Contains("\t") || arg.Contains("\""))
+            {
+                return "\"" + arg.Replace("\"", "\"\"") + "\"";
+            }
+            return arg;
+        }
+
         static void Main(string[] args)
         {
-            var para = string.Join(" ", args);
+            var para = string.Join(" ", Array.ConvertAll(args, s=>EscapeArgument(s)));
             bool hide = hideConsole.Equals("true");
             if (!embedContent.StartsWith("${"))
             {
