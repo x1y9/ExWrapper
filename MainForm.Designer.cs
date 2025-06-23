@@ -285,7 +285,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "ExWrapper 1.2";
+            this.Text = "ExWrapper 1.3";
             this.groupCall.ResumeLayout(false);
             this.groupCall.PerformLayout();
             this.groupEmbed.ResumeLayout(false);
